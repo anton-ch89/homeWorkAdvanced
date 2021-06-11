@@ -1,9 +1,10 @@
-'use strict';
+'use strict'; 
+
 
 const foo = function (value) {
     if (typeof (value) === 'string') {
         if (value.length > 30) {
-            return (value.slice(0, 31).trim() + '...');
+            return (value.trim().slice(0, 30) + '...');
         }
         return value.trim();
     } else if (typeof (value) !== 'string') {
@@ -16,4 +17,3 @@ const foo = function (value) {
 };
 
 console.log(foo(' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, alias.  '));
-
