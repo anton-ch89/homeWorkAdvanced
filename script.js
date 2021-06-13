@@ -57,16 +57,15 @@ let daysEn = 'Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday';
 
 // Вариант 3
 
-let weeks = [
-['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-];
+let weeks = {
+'ru' : ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+'en' : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+};
 
-let week = (lang === 'ru') ? weeks[0] : weeks[1];
-console.log(week);
+let lang = 'ru';
 
-week = (lang === 'en') ? weeks[1] : weeks[0];
-console.log(week);
+document.write(weeks[lang]);
+
 
 
 
