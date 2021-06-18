@@ -11,7 +11,6 @@ let day = '';
 let month = '';
 let hour = '';
 
-
 week.forEach((e, i) => {
 if(today === i) {
   day = e;
@@ -35,19 +34,21 @@ const getHour = function() {
 };
 getHour();
 
+let newDiv = document.createElement('div');
+function clock(){ 
+  let date = new Date();
+  let fulldate = `<p>Сегодня ${day}, ${date.getDate()} ${month} ${date.getFullYear()} года ${date.getHours()} ${hour}  ${date.getMinutes()}  минут ${date.getSeconds()} секунды</p>`;
+  document.querySelector('.clock').innerHTML = fulldate;
+}
+
+setInterval(clock, 1000);
+
+
 let task2Second = '';
 let task2Minute = '';
 let task2Hour = '';
 let task2Day = '';
 let task2Month = '';
-
-function clock(){ 
-  let date = new Date();
-document.write('Сегодня ' + day + ',' +' ' + date.getDate() + ' ' + ' '  + month + ' ' + date.getFullYear() + ' года ' +' ' + date.getHours() +  hour  + date.getMinutes() + ' минут ' +  date.getSeconds() + ' секунды');
-document.close();
-}
-clock();
-setInterval(clock, 1000);
 
 const plusZero = function() {
   if(date.getDate() < 10){
@@ -67,5 +68,9 @@ const plusZero = function() {
   }else {task2Second = date.getSeconds();} 
 };
 plusZero();
-document.write(`<br> ${task2Day}.${task2Month}.${date.getFullYear()} - ${task2Hour}:${task2Minute}:${task2Second}'`);
 
+function clock2 () {
+  let date = new Date();
+  document.querySelector('.clock2').innerHTML = `<br><p> ${date.toLocaleDateString('ru')} - ${date.toLocaleTimeString('ru')}</p>`;
+}
+setInterval(clock2, 1000);
