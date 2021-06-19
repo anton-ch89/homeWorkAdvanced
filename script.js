@@ -11,11 +11,32 @@ let day = '';
 let month = '';
 let hour = '';
 
+let clockDiv1 =document.createElement('div');
+clockDiv1.className = 'clock';
+document.body.append(clockDiv1);
+let clockDiv2 =document.createElement('div');
+clockDiv2.className = 'clock2';
+document.body.append(clockDiv2);
+
 week.forEach((e, i) => {
 if(today === i) {
   day = e;
 }
 });
+
+function declOfNum(n, textForms) {  
+  n = Math.abs(n) % 100; 
+  let n1 = n % 10;
+  if (n > 10 && n < 20) {
+     return textForms[2]; 
+    }else if (n1 > 1 && n1 < 5) { 
+      return textForms[1]; 
+    }else if (n1 == 1) { 
+      return textForms[0]; 
+    }else{
+      return textForms[2];
+    }
+}
 
 year.forEach((e, i) => {
   if(monthNow === i) {
@@ -37,7 +58,10 @@ getHour();
 let newDiv = document.createElement('div');
 function clock(){ 
   let date = new Date();
-  let fulldate = `<p>Сегодня ${day}, ${date.getDate()} ${month} ${date.getFullYear()} года ${date.getHours()} ${hour}  ${date.getMinutes()}  минут ${date.getSeconds()} секунды</p>`;
+  let fulldate = `<p>Сегодня ${day}, ${date.getDate()} ${month} ${date.getFullYear()} 
+  года ${date.getHours()} ${hour}  ${date.getMinutes()}  
+  ${declOfNum(date.getMinutes(), ['минута', 'минуты', 'минут'])} ${date.getSeconds()} 
+  ${declOfNum(date.getSeconds(), ['секунда', 'секунды', 'секунд'])}</p>`;
   document.querySelector('.clock').innerHTML = fulldate;
 }
 
@@ -71,6 +95,6 @@ plusZero();
 
 function clock2 () {
   let date = new Date();
-  document.querySelector('.clock2').innerHTML = `<br><p> ${date.toLocaleDateString('ru')} - ${date.toLocaleTimeString('ru')}</p>`;
+  document.querySelector('.clock2').innerHTML = `<p> ${date.toLocaleDateString('ru')} - ${date.toLocaleTimeString('ru')}</p>`;
 }
 setInterval(clock2, 1000);
